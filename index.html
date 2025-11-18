@@ -1,0 +1,2025 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multimedia Jaringan Komputer &amp; Internet</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .container {
+            display: flex;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #5b21b6 0%, #7c3aed 100%);
+            padding: 20px;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+            overflow-y: auto;
+        }
+        
+        .logo-section {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+        }
+        
+        .logo-section h1 {
+            color: #fbbf24;
+            font-size: 22px;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .logo-section p {
+            color: #fff;
+            font-size: 13px;
+            margin: 5px 0;
+        }
+        
+        .menu-item {
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            font-weight: 500;
+        }
+        
+        .menu-item:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateX(5px);
+            border-left-color: #fbbf24;
+        }
+        
+        .menu-item.active {
+            background: #fbbf24;
+            color: #5b21b6;
+            border-left-color: #f59e0b;
+            font-weight: 600;
+        }
+        
+        .main-content {
+            flex: 1;
+            background: white;
+            overflow-y: auto;
+            height: 100%;
+        }
+        
+        .content-section {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .materi-page {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+        
+        .materi-page h2 {
+            color: #7c3aed;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 3px solid #fbbf24;
+            padding-bottom: 10px;
+        }
+        
+        .materi-page h3 {
+            color: #5b21b6;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .materi-page p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .materi-page ul, .materi-page ol {
+            margin-left: 25px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .materi-page li {
+            margin-bottom: 10px;
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+        }
+        
+        .nav-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.prev {
+            background: #6b7280;
+            color: white;
+        }
+        
+        .nav-btn.prev:hover {
+            background: #4b5563;
+        }
+        
+        .nav-btn.next {
+            background: #10b981;
+            color: white;
+        }
+        
+        .nav-btn.next:hover {
+            background: #059669;
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .page-indicator {
+            text-align: center;
+            color: #7c3aed;
+            font-weight: 600;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #f59e0b;
+            margin: 20px 0;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #7c3aed;
+            margin: 20px 0;
+        }
+        
+        .simulasi-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .sim-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        
+        .sim-card h3 {
+            color: #7c3aed;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        .sim-visual {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 30px;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 10px;
+            margin: 20px 0;
+            min-height: 200px;
+        }
+        
+        .sim-node {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(124,58,237,0.4);
+            position: relative;
+        }
+        
+        .sim-arrow {
+            font-size: 40px;
+            color: #10b981;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+        
+        .sim-btn {
+            padding: 12px 30px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .sim-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+        
+        .latihan-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .exercise-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border-left: 5px solid #7c3aed;
+        }
+        
+        .exercise-card h4 {
+            color: #5b21b6;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .exercise-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        
+        .exercise-input:focus {
+            outline: none;
+            border-color: #7c3aed;
+        }
+        
+        .check-btn {
+            padding: 10px 25px;
+            background: #7c3aed;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .check-btn:hover {
+            background: #5b21b6;
+        }
+        
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .feedback.correct {
+            background: #d1fae5;
+            color: #065f46;
+            display: block;
+        }
+        
+        .feedback.incorrect {
+            background: #fee2e2;
+            color: #991b1b;
+            display: block;
+        }
+        
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .quiz-header {
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .quiz-header h2 {
+            margin: 0 0 20px 0;
+            font-size: 28px;
+        }
+        
+        .student-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #5b21b6;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #7c3aed;
+        }
+        
+        .start-quiz-btn {
+            width: 100%;
+            padding: 15px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .start-quiz-btn:hover {
+            background: #059669;
+        }
+        
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .info-item {
+            text-align: center;
+        }
+        
+        .info-item label {
+            display: block;
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .info-item span {
+            display: block;
+            color: #5b21b6;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .timer {
+            color: #ef4444 !important;
+        }
+        
+        .question-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        
+        .question-number {
+            color: #7c3aed;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            color: #1f2937;
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .option-item {
+            background: #f9fafb;
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .option-item:hover {
+            background: #f3f4f6;
+            border-color: #7c3aed;
+        }
+        
+        .option-item.selected {
+            background: #ede9fe;
+            border-color: #7c3aed;
+        }
+        
+        .quiz-nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .submit-quiz-btn {
+            padding: 12px 30px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-quiz-btn:hover {
+            background: #dc2626;
+        }
+        
+        .result-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .result-score {
+            font-size: 72px;
+            font-weight: 700;
+            color: #7c3aed;
+            margin: 20px 0;
+        }
+        
+        .result-message {
+            font-size: 24px;
+            color: #1f2937;
+            margin-bottom: 30px;
+        }
+        
+        .warning-message {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        
+        .developer-info {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .developer-info h4 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+        
+        .developer-info p {
+            color: #78350f;
+            margin: 5px 0;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <div class="sidebar">
+    <div class="logo-section">
+     <h1 id="app-title">📚 Multimedia Jaringan Komputer &amp; Internet</h1>
+     <p>Pengantar Komputer</p>
+    </div>
+    <div class="menu-item active" data-menu="materi">
+     📖 Materi Pembelajaran
+    </div>
+    <div class="menu-item" data-menu="simulasi">
+     🔬 Simulasi
+    </div>
+    <div class="menu-item" data-menu="latihan">
+     ✏️ Latihan
+    </div>
+    <div class="menu-item" data-menu="quiz">
+     📝 Kuis
+    </div>
+    <div class="developer-info">
+     <h4>Pengembang</h4>
+     <p id="developer-name">Dinar Riaddin, M.Pd</p>
+     <p>Dosen Pendidikan Matematika dan Statistika</p>
+     <p id="institution-name">UIN A.M. Sangadji Ambon</p>
+    </div>
+   </div>
+   <div class="main-content" id="mainContent"><!-- MATERI SECTION -->
+    <div class="content-section active" id="materi-section">
+     <div class="materi-page" id="materi-content"></div>
+     <div class="navigation-buttons"><button class="nav-btn prev" id="prevBtn" onclick="previousPage()">← Sebelumnya</button> <button class="nav-btn next" id="nextBtn" onclick="nextPage()">Selanjutnya →</button>
+     </div>
+     <div class="page-indicator" id="pageIndicator"></div>
+    </div><!-- SIMULASI SECTION -->
+    <div class="content-section" id="simulasi-section">
+     <div class="simulasi-container">
+      <h2 style="color: #7c3aed; font-size: 32px; margin-bottom: 30px;">🔬 Simulasi Interaktif</h2>
+      <div class="sim-card">
+       <h3>📬 Analogi Sistem Kantor Pos</h3>
+       <p style="line-height: 1.8; color: #4b5563;">Internet bekerja seperti sistem kantor pos. Mari kita lihat bagaimana paket data dikirim dari pengirim ke penerima!</p>
+       <div class="sim-visual" id="postalSim">
+        <div class="sim-node" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);"><span>📤<br>
+          Pengirim</span>
+        </div>
+        <div class="sim-arrow">
+         →
+        </div>
+        <div class="sim-node" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);"><span>📮<br>
+          Router</span>
+        </div>
+        <div class="sim-arrow">
+         →
+        </div>
+        <div class="sim-node" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);"><span>📥<br>
+          Penerima</span>
+        </div>
+       </div><button class="sim-btn" onclick="animatePostal()">▶️ Jalankan Simulasi</button>
+       <p style="margin-top: 20px; color: #4b5563; font-style: italic;">Klik tombol untuk melihat bagaimana data berpindah melalui jaringan!</p>
+      </div>
+      <div class="sim-card">
+       <h3>🌐 Simulasi IP Address</h3>
+       <p style="line-height: 1.8; color: #4b5563;">IP Address adalah alamat unik komputer di internet. Mari kita lihat bagaimana IP Address bekerja!</p>
+       <div class="sim-visual" id="ipSim">
+        <div class="sim-node" style="width: 150px; height: 150px;">
+         <div style="text-align: center;">
+          <div style="font-size: 16px; margin-bottom: 10px;">
+           💻
+          </div>
+          <div id="ipDisplay" style="font-size: 14px; word-break: break-all;">
+           192.168.1.1
+          </div>
+         </div>
+        </div>
+       </div><button class="sim-btn" onclick="generateIP()">🔄 Generate IP Baru</button>
+       <p style="margin-top: 20px; color: #4b5563; font-style: italic;">Setiap klik akan menghasilkan IP Address baru!</p>
+      </div>
+      <div class="sim-card">
+       <h3>🔍 Simulasi DNS (Domain Name System)</h3>
+       <p style="line-height: 1.8; color: #4b5563;">DNS menerjemahkan nama domain menjadi IP Address. Mari kita coba!</p>
+       <div style="margin: 20px 0;"><input type="text" id="domainInput" placeholder="Masukkan nama domain (contoh: google.com)" style="width: 100%; padding: 15px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;">
+       </div><button class="sim-btn" onclick="resolveDNS()">🔍 Resolve DNS</button>
+       <div id="dnsResult" style="margin-top: 20px; padding: 20px; background: #f3f4f6; border-radius: 8px; display: none;">
+        <p style="color: #7c3aed; font-weight: 600; margin: 0;"></p>
+       </div>
+      </div>
+     </div>
+    </div><!-- LATIHAN SECTION -->
+    <div class="content-section" id="latihan-section">
+     <div class="latihan-container">
+      <h2 style="color: #7c3aed; font-size: 32px; margin-bottom: 30px;">✏️ Latihan Soal</h2>
+      <div class="exercise-card">
+       <h4>1. Jelaskan perbedaan antara LAN dan WAN!</h4><textarea class="exercise-input" id="ex1" rows="4" placeholder="Tulis jawaban Anda di sini..."></textarea> <button class="check-btn" onclick="checkExercise(1)">Periksa Jawaban</button>
+       <div class="feedback" id="feedback1"></div>
+      </div>
+      <div class="exercise-card">
+       <h4>2. Apa fungsi utama dari Router dalam jaringan komputer?</h4><textarea class="exercise-input" id="ex2" rows="4" placeholder="Tulis jawaban Anda di sini..."></textarea> <button class="check-btn" onclick="checkExercise(2)">Periksa Jawaban</button>
+       <div class="feedback" id="feedback2"></div>
+      </div>
+      <div class="exercise-card">
+       <h4>3. Sebutkan dan jelaskan 3 jenis topologi jaringan!</h4><textarea class="exercise-input" id="ex3" rows="5" placeholder="Tulis jawaban Anda di sini..."></textarea> <button class="check-btn" onclick="checkExercise(3)">Periksa Jawaban</button>
+       <div class="feedback" id="feedback3"></div>
+      </div>
+      <div class="exercise-card">
+       <h4>4. Apa yang dimaksud dengan IP Address dan berikan contohnya!</h4><textarea class="exercise-input" id="ex4" rows="4" placeholder="Tulis jawaban Anda di sini..."></textarea> <button class="check-btn" onclick="checkExercise(4)">Periksa Jawaban</button>
+       <div class="feedback" id="feedback4"></div>
+      </div>
+      <div class="exercise-card">
+       <h4>5. Jelaskan cara kerja DNS dengan analogi sederhana!</h4><textarea class="exercise-input" id="ex5" rows="4" placeholder="Tulis jawaban Anda di sini..."></textarea> <button class="check-btn" onclick="checkExercise(5)">Periksa Jawaban</button>
+       <div class="feedback" id="feedback5"></div>
+      </div>
+     </div>
+    </div><!-- QUIZ SECTION -->
+    <div class="content-section" id="quiz-section">
+     <div class="quiz-container">
+      <div id="quizStart">
+       <div class="quiz-header">
+        <h2>📝 Kuis Jaringan Komputer &amp; Internet</h2>
+        <p style="margin: 0; font-size: 16px;">15 Soal Pilihan Ganda • Durasi: 20 Menit</p>
+       </div>
+       <div class="student-form">
+        <div class="form-group"><label for="studentName">Nama Lengkap *</label> <input type="text" id="studentName" placeholder="Masukkan nama lengkap Anda" required>
+        </div>
+        <div class="form-group"><label for="studentNIM">NIM *</label> <input type="text" id="studentNIM" placeholder="Masukkan NIM Anda" required>
+        </div><button class="start-quiz-btn" onclick="startQuiz()">Mulai Kuis</button>
+       </div>
+       <div class="info-box">
+        <h4 style="color: #5b21b6; margin-top: 0;">⚠️ Peraturan Kuis:</h4>
+        <ul style="margin: 10px 0;">
+         <li>Kuis terdiri dari 15 soal pilihan ganda</li>
+         <li>Waktu pengerjaan: 20 menit</li>
+         <li>Tidak boleh membuka tab baru atau keluar dari halaman</li>
+         <li>Tidak boleh menyalin atau menempelkan teks</li>
+         <li>Jika melanggar, kuis akan otomatis selesai</li>
+         <li>Jawablah dengan jujur dan percaya diri!</li>
+        </ul>
+       </div>
+      </div>
+      <div id="quizActive" style="display: none;">
+       <div class="warning-message" id="warningMessage"></div>
+       <div class="quiz-info">
+        <div class="info-item"><label>Nama:</label> <span id="displayName">-</span>
+        </div>
+        <div class="info-item"><label>NIM:</label> <span id="displayNIM">-</span>
+        </div>
+        <div class="info-item"><label>Soal:</label> <span id="questionCounter">1/15</span>
+        </div>
+        <div class="info-item"><label>Waktu:</label> <span class="timer" id="timerDisplay">20:00</span>
+        </div>
+       </div>
+       <div class="question-card" id="questionCard"></div>
+       <div class="quiz-nav-buttons"><button class="nav-btn prev" id="prevQuestion" onclick="previousQuestion()">← Sebelumnya</button> <button class="nav-btn next" id="nextQuestion" onclick="nextQuestion()">Selanjutnya →</button> <button class="submit-quiz-btn" onclick="submitQuiz()">Selesai &amp; Submit</button>
+       </div>
+      </div>
+      <div id="quizResult" style="display: none;">
+       <div class="result-card">
+        <h2 style="color: #7c3aed; margin-top: 0;">🎉 Kuis Selesai!</h2>
+        <div class="result-score" id="finalScore">
+         0
+        </div>
+        <div class="result-message" id="resultMessage"></div>
+        <div style="background: #f3f4f6; padding: 20px; border-radius: 10px; margin: 20px 0;">
+         <p style="margin: 5px 0;"><strong>Nama:</strong> <span id="resultName"></span></p>
+         <p style="margin: 5px 0;"><strong>NIM:</strong> <span id="resultNIM"></span></p>
+         <p style="margin: 5px 0;"><strong>Waktu Mulai:</strong> <span id="resultStartTime"></span></p>
+         <p style="margin: 5px 0;"><strong>Waktu Selesai:</strong> <span id="resultEndTime"></span></p>
+        </div><button class="start-quiz-btn" onclick="resetQuiz()">Kembali ke Menu Kuis</button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+        // Config object for Element SDK
+        const defaultConfig = {
+            judul_aplikasi: "Multimedia Jaringan Komputer & Internet",
+            nama_pengembang: "Dinar Riaddin, M.Pd",
+            institusi: "UIN A.M. Sangadji Ambon",
+            background_color: "#667eea",
+            sidebar_color: "#5b21b6",
+            primary_color: "#7c3aed",
+            accent_color: "#fbbf24",
+            text_color: "#1f2937"
+        };
+
+        // Materi content - 22 pages
+        const materiPages = [
+            {
+                title: "Selamat Datang di Pembelajaran Jaringan Komputer & Internet",
+                content: `
+                    <h2>Selamat Datang! 👋</h2>
+                    <p>Selamat datang di multimedia pembelajaran Jaringan Komputer dan Internet. Melalui pembelajaran ini, Anda akan memahami konsep dasar jaringan komputer dan bagaimana internet bekerja.</p>
+                    
+                    <div class="highlight-box">
+                        <h4 style="margin-top: 0;">🎯 Tujuan Pembelajaran</h4>
+                        <p>Setelah mempelajari materi ini, Anda diharapkan mampu:</p>
+                        <ul>
+                            <li>Menjelaskan konsep dasar jaringan komputer</li>
+                            <li>Memahami cara kerja internet</li>
+                            <li>Mengerti fungsi IP Address</li>
+                            <li>Memahami sistem DNS</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="margin-top: 25px; font-size: 18px; text-align: center; color: #7c3aed; font-weight: 600;">
+                        Mari kita mulai perjalanan belajar kita! 🚀
+                    </p>
+                `
+            },
+            {
+                title: "Apa itu Jaringan Komputer?",
+                content: `
+                    <h2>Apa itu Jaringan Komputer? 🌐</h2>
+                    <p>Jaringan komputer adalah kumpulan dua atau lebih komputer yang saling terhubung untuk berbagi sumber daya, data, dan informasi.</p>
+                    
+                    <h3>Manfaat Jaringan Komputer</h3>
+                    <ul>
+                        <li><strong>Berbagi Sumber Daya:</strong> Printer, file, dan aplikasi dapat digunakan bersama</li>
+                        <li><strong>Komunikasi:</strong> Email, chat, dan video conference</li>
+                        <li><strong>Akses Informasi:</strong> Mengakses data dari komputer lain</li>
+                        <li><strong>Efisiensi:</strong> Menghemat biaya dan waktu</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <h4 style="margin-top: 0;">💡 Tahukah Anda?</h4>
+                        <p>Jaringan komputer pertama di dunia adalah ARPANET yang dikembangkan pada tahun 1969 oleh Departemen Pertahanan Amerika Serikat.</p>
+                    </div>
+                `
+            },
+            {
+                title: "Jenis-Jenis Jaringan Komputer",
+                content: `
+                    <h2>Jenis-Jenis Jaringan Komputer 📡</h2>
+                    
+                    <h3>1. LAN (Local Area Network)</h3>
+                    <p>Jaringan komputer dalam area terbatas seperti gedung, kantor, atau sekolah.</p>
+                    <ul>
+                        <li>Jangkauan: Hingga beberapa kilometer</li>
+                        <li>Kecepatan: Sangat tinggi (hingga 1 Gbps)</li>
+                        <li>Contoh: Jaringan komputer di lab sekolah</li>
+                    </ul>
+                    
+                    <h3>2. MAN (Metropolitan Area Network)</h3>
+                    <p>Jaringan komputer yang mencakup area kota atau wilayah metropolitan.</p>
+                    <ul>
+                        <li>Jangkauan: Hingga 50 km</li>
+                        <li>Kecepatan: Tinggi</li>
+                        <li>Contoh: Jaringan antar kampus dalam satu kota</li>
+                    </ul>
+                    
+                    <h3>3. WAN (Wide Area Network)</h3>
+                    <p>Jaringan komputer dengan jangkauan geografis yang luas, bisa antar kota, negara, atau benua.</p>
+                    <ul>
+                        <li>Jangkauan: Tidak terbatas</li>
+                        <li>Kecepatan: Bervariasi</li>
+                        <li>Contoh: Internet</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Topologi Jaringan (1)",
+                content: `
+                    <h2>Topologi Jaringan 🔗</h2>
+                    <p>Topologi jaringan adalah cara atau pola yang digunakan untuk menghubungkan komputer dalam suatu jaringan.</p>
+                    
+                    <h3>1. Topologi Bus</h3>
+                    <p>Semua komputer terhubung pada satu kabel utama (backbone).</p>
+                    <div class="highlight-box">
+                        <p><strong>Kelebihan:</strong></p>
+                        <ul>
+                            <li>Biaya instalasi murah</li>
+                            <li>Mudah dikembangkan</li>
+                        </ul>
+                        <p><strong>Kekurangan:</strong></p>
+                        <ul>
+                            <li>Jika kabel utama putus, seluruh jaringan terganggu</li>
+                            <li>Sulit mendeteksi kerusakan</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>2. Topologi Star (Bintang)</h3>
+                    <p>Semua komputer terhubung ke satu titik pusat (hub/switch).</p>
+                    <div class="highlight-box">
+                        <p><strong>Kelebihan:</strong></p>
+                        <ul>
+                            <li>Mudah mendeteksi kerusakan</li>
+                            <li>Jika satu komputer rusak, tidak mempengaruhi yang lain</li>
+                        </ul>
+                        <p><strong>Kekurangan:</strong></p>
+                        <ul>
+                            <li>Jika hub rusak, seluruh jaringan terganggu</li>
+                            <li>Membutuhkan banyak kabel</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Topologi Jaringan (2)",
+                content: `
+                    <h2>Topologi Jaringan (Lanjutan) 🔗</h2>
+                    
+                    <h3>3. Topologi Ring (Cincin)</h3>
+                    <p>Setiap komputer terhubung dengan komputer lain membentuk lingkaran.</p>
+                    <div class="highlight-box">
+                        <p><strong>Kelebihan:</strong></p>
+                        <ul>
+                            <li>Tidak terjadi tabrakan data</li>
+                            <li>Biaya instalasi murah</li>
+                        </ul>
+                        <p><strong>Kekurangan:</strong></p>
+                        <ul>
+                            <li>Jika satu komputer rusak, seluruh jaringan terganggu</li>
+                            <li>Sulit dikembangkan</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>4. Topologi Mesh</h3>
+                    <p>Setiap komputer terhubung langsung dengan semua komputer lain.</p>
+                    <div class="highlight-box">
+                        <p><strong>Kelebihan:</strong></p>
+                        <ul>
+                            <li>Sangat reliable (handal)</li>
+                            <li>Jika satu jalur rusak, ada jalur alternatif</li>
+                        </ul>
+                        <p><strong>Kekurangan:</strong></p>
+                        <ul>
+                            <li>Biaya instalasi sangat mahal</li>
+                            <li>Instalasi rumit</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Perangkat Jaringan Komputer (1)",
+                content: `
+                    <h2>Perangkat Jaringan Komputer 🖥️</h2>
+                    
+                    <h3>1. Network Interface Card (NIC)</h3>
+                    <p>Kartu jaringan yang dipasang pada komputer untuk menghubungkan komputer ke jaringan.</p>
+                    <ul>
+                        <li>Berfungsi mengubah data menjadi sinyal yang dapat dikirim melalui kabel</li>
+                        <li>Memiliki MAC Address unik</li>
+                    </ul>
+                    
+                    <h3>2. Kabel Jaringan</h3>
+                    <p>Media untuk mengirimkan data antar perangkat.</p>
+                    <ul>
+                        <li><strong>UTP (Unshielded Twisted Pair):</strong> Paling umum digunakan</li>
+                        <li><strong>Fiber Optic:</strong> Menggunakan cahaya, kecepatan sangat tinggi</li>
+                        <li><strong>Coaxial:</strong> Jarang digunakan saat ini</li>
+                    </ul>
+                    
+                    <h3>3. Hub</h3>
+                    <p>Perangkat yang menghubungkan beberapa komputer dalam jaringan.</p>
+                    <div class="info-box">
+                        <p><strong>Karakteristik Hub:</strong></p>
+                        <ul>
+                            <li>Mengirim data ke semua port</li>
+                            <li>Tidak cerdas (tidak bisa memfilter data)</li>
+                            <li>Sudah jarang digunakan</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Perangkat Jaringan Komputer (2)",
+                content: `
+                    <h2>Perangkat Jaringan Komputer (Lanjutan) 🖥️</h2>
+                    
+                    <h3>4. Switch</h3>
+                    <p>Perangkat pintar yang menghubungkan beberapa komputer dalam jaringan.</p>
+                    <div class="highlight-box">
+                        <p><strong>Keunggulan Switch:</strong></p>
+                        <ul>
+                            <li>Dapat memfilter dan mengirim data ke tujuan yang tepat</li>
+                            <li>Lebih efisien dibanding Hub</li>
+                            <li>Mengurangi collision (tabrakan data)</li>
+                            <li>Kecepatan transfer lebih tinggi</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>5. Router</h3>
+                    <p>Perangkat yang menghubungkan dua atau lebih jaringan dan menentukan jalur terbaik untuk pengiriman data.</p>
+                    <div class="highlight-box">
+                        <p><strong>Fungsi Router:</strong></p>
+                        <ul>
+                            <li>Menghubungkan jaringan LAN dengan internet</li>
+                            <li>Routing (menentukan jalur pengiriman data)</li>
+                            <li>Filtering (memfilter paket data)</li>
+                            <li>NAT (Network Address Translation)</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Perangkat Jaringan Komputer (3)",
+                content: `
+                    <h2>Perangkat Jaringan Komputer (Lanjutan) 🖥️</h2>
+                    
+                    <h3>6. Modem</h3>
+                    <p>Modem (Modulator Demodulator) adalah perangkat yang mengubah sinyal digital menjadi analog dan sebaliknya.</p>
+                    <ul>
+                        <li><strong>Modulator:</strong> Mengubah sinyal digital → analog</li>
+                        <li><strong>Demodulator:</strong> Mengubah sinyal analog → digital</li>
+                        <li>Digunakan untuk menghubungkan komputer ke internet melalui jalur telepon atau kabel</li>
+                    </ul>
+                    
+                    <h3>7. Access Point</h3>
+                    <p>Perangkat yang memungkinkan perangkat wireless terhubung ke jaringan kabel.</p>
+                    <div class="info-box">
+                        <p><strong>Fungsi Access Point:</strong></p>
+                        <ul>
+                            <li>Menghubungkan perangkat WiFi ke jaringan</li>
+                            <li>Memperluas jangkauan jaringan wireless</li>
+                            <li>Mendukung banyak koneksi simultan</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>8. Repeater</h3>
+                    <p>Perangkat yang memperkuat sinyal jaringan agar dapat menjangkau jarak yang lebih jauh.</p>
+                `
+            },
+            {
+                title: "Pengantar Internet",
+                content: `
+                    <h2>Apa itu Internet? 🌍</h2>
+                    <p>Internet adalah jaringan komputer global yang menghubungkan jutaan komputer di seluruh dunia.</p>
+                    
+                    <div class="highlight-box">
+                        <h4 style="margin-top: 0;">📚 Definisi</h4>
+                        <p><strong>Internet (Interconnected Network)</strong> adalah sistem jaringan komputer yang saling terhubung secara global menggunakan protokol TCP/IP untuk menghubungkan miliaran perangkat di seluruh dunia.</p>
+                    </div>
+                    
+                    <h3>Sejarah Singkat Internet</h3>
+                    <ol>
+                        <li><strong>1969:</strong> ARPANET dikembangkan (cikal bakal internet)</li>
+                        <li><strong>1980-an:</strong> Protokol TCP/IP dikembangkan</li>
+                        <li><strong>1989:</strong> World Wide Web (WWW) diciptakan oleh Tim Berners-Lee</li>
+                        <li><strong>1990-an:</strong> Internet mulai dikomersialkan</li>
+                        <li><strong>2000-an:</strong> Era media sosial dan mobile internet</li>
+                        <li><strong>Sekarang:</strong> Internet of Things (IoT) dan AI</li>
+                    </ol>
+                    
+                    <div class="info-box">
+                        <h4 style="margin-top: 0;">💡 Fakta Menarik</h4>
+                        <p>Lebih dari 5 miliar orang di seluruh dunia menggunakan internet pada tahun 2024, dengan pertumbuhan yang terus meningkat setiap tahunnya!</p>
+                    </div>
+                `
+            },
+            {
+                title: "Cara Kerja Internet - Analogi Kantor Pos",
+                content: `
+                    <h2>Cara Kerja Internet: Analogi Kantor Pos 📬</h2>
+                    <p>Untuk memahami cara kerja internet, kita akan menggunakan analogi sistem kantor pos yang mudah dipahami.</p>
+                    
+                    <h3>Analogi Pengiriman Surat</h3>
+                    <div class="highlight-box">
+                        <p><strong>Ketika Anda mengirim surat:</strong></p>
+                        <ol>
+                            <li>Anda menulis surat dan memasukkan ke amplop</li>
+                            <li>Anda menuliskan alamat tujuan di amplop</li>
+                            <li>Anda memasukkan surat ke kotak pos</li>
+                            <li>Petugas pos mengambil dan membawa ke kantor pos</li>
+                            <li>Surat disortir berdasarkan wilayah</li>
+                            <li>Surat dikirim ke kantor pos tujuan</li>
+                            <li>Kurir mengantarkan ke alamat tujuan</li>
+                        </ol>
+                    </div>
+                    
+                    <h3>Internet Bekerja dengan Cara Serupa</h3>
+                    <div class="info-box">
+                        <p><strong>Ketika Anda mengakses website:</strong></p>
+                        <ol>
+                            <li><strong>Surat = Data/Paket:</strong> Informasi yang dikirim</li>
+                            <li><strong>Alamat = IP Address:</strong> Alamat komputer tujuan</li>
+                            <li><strong>Kotak Pos = Router:</strong> Perangkat yang meneruskan data</li>
+                            <li><strong>Kantor Pos = Server:</strong> Komputer yang menyimpan data</li>
+                            <li><strong>Kurir = ISP:</strong> Penyedia layanan internet</li>
+                        </ol>
+                    </div>
+                `
+            },
+            {
+                title: "Protokol Internet - TCP/IP",
+                content: `
+                    <h2>Protokol Internet: TCP/IP 📡</h2>
+                    <p>TCP/IP adalah sekumpulan aturan yang mengatur komunikasi data di internet.</p>
+                    
+                    <h3>TCP (Transmission Control Protocol)</h3>
+                    <div class="highlight-box">
+                        <p><strong>Fungsi TCP:</strong></p>
+                        <ul>
+                            <li>Memecah data menjadi paket-paket kecil</li>
+                            <li>Memastikan semua paket sampai dengan benar</li>
+                            <li>Menyusun kembali paket di tujuan</li>
+                            <li>Mengirim ulang paket yang hilang atau rusak</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>IP (Internet Protocol)</h3>
+                    <div class="highlight-box">
+                        <p><strong>Fungsi IP:</strong></p>
+                        <ul>
+                            <li>Memberikan alamat unik untuk setiap perangkat (IP Address)</li>
+                            <li>Menentukan jalur pengiriman paket data</li>
+                            <li>Mengirimkan paket dari sumber ke tujuan</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Analogi: TCP/IP seperti Pengiriman Puzzle</h3>
+                    <p>Bayangkan Anda mengirim puzzle 1000 keping kepada teman:</p>
+                    <ul>
+                        <li><strong>TCP:</strong> Memecah puzzle, menomori setiap keping, memastikan semua sampai</li>
+                        <li><strong>IP:</strong> Memberikan alamat tujuan dan menentukan jalur pengiriman</li>
+                    </ul>
+                `
+            },
+            {
+                title: "IP Address - Pengertian",
+                content: `
+                    <h2>IP Address (Internet Protocol Address) 🔢</h2>
+                    <p>IP Address adalah alamat unik yang diberikan kepada setiap perangkat yang terhubung ke internet atau jaringan komputer.</p>
+                    
+                    <div class="highlight-box">
+                        <h4 style="margin-top: 0;">📍 Analogi Alamat Rumah</h4>
+                        <p>IP Address seperti alamat rumah Anda:</p>
+                        <ul>
+                            <li>Setiap rumah memiliki alamat unik</li>
+                            <li>Tanpa alamat, surat tidak bisa sampai</li>
+                            <li>Alamat terdiri dari beberapa bagian (RT, RW, Kelurahan, Kota)</li>
+                            <li>IP Address juga unik dan terdiri dari beberapa bagian</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Fungsi IP Address</h3>
+                    <ul>
+                        <li><strong>Identifikasi:</strong> Mengidentifikasi perangkat di jaringan</li>
+                        <li><strong>Lokasi:</strong> Menunjukkan lokasi perangkat di jaringan</li>
+                        <li><strong>Routing:</strong> Membantu router mengirim data ke tujuan yang tepat</li>
+                        <li><strong>Komunikasi:</strong> Memungkinkan perangkat berkomunikasi satu sama lain</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Format IP Address",
+                content: `
+                    <h2>Format IP Address 🔢</h2>
+                    
+                    <h3>IP Address Versi 4 (IPv4)</h3>
+                    <p>Format IPv4 terdiri dari 4 kelompok angka (0-255) yang dipisahkan titik.</p>
+                    <div class="highlight-box">
+                        <p><strong>Contoh IPv4:</strong> 192.168.1.1</p>
+                        <ul>
+                            <li>Setiap kelompok disebut "oktet"</li>
+                            <li>Setiap oktet bernilai 0-255</li>
+                            <li>Total ada 4,3 miliar alamat IP yang mungkin</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Kelas IP Address</h3>
+                    <ul>
+                        <li><strong>Kelas A:</strong> 1.0.0.0 - 126.255.255.255 (Jaringan besar)</li>
+                        <li><strong>Kelas B:</strong> 128.0.0.0 - 191.255.255.255 (Jaringan menengah)</li>
+                        <li><strong>Kelas C:</strong> 192.0.0.0 - 223.255.255.255 (Jaringan kecil)</li>
+                    </ul>
+                    
+                    <h3>IP Address Versi 6 (IPv6)</h3>
+                    <p>Format IPv6 lebih panjang untuk menampung lebih banyak perangkat.</p>
+                    <div class="info-box">
+                        <p><strong>Contoh IPv6:</strong> 2001:0db8:85a3:0000:0000:8a2e:0370:7334</p>
+                        <ul>
+                            <li>Menggunakan format heksadesimal</li>
+                            <li>Total ada 340 undecillion alamat IP yang mungkin!</li>
+                            <li>Dikembangkan karena IPv4 mulai habis</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "IP Address Public vs Private",
+                content: `
+                    <h2>IP Address: Public vs Private 🌐🏠</h2>
+                    
+                    <h3>IP Address Public</h3>
+                    <div class="highlight-box">
+                        <p><strong>Karakteristik:</strong></p>
+                        <ul>
+                            <li>Dapat diakses dari internet</li>
+                            <li>Unik di seluruh dunia</li>
+                            <li>Diberikan oleh ISP (Internet Service Provider)</li>
+                            <li>Digunakan untuk berkomunikasi di internet</li>
+                            <li>Contoh: 203.45.67.89</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>IP Address Private</h3>
+                    <div class="highlight-box">
+                        <p><strong>Karakteristik:</strong></p>
+                        <ul>
+                            <li>Hanya digunakan dalam jaringan lokal</li>
+                            <li>Tidak dapat diakses langsung dari internet</li>
+                            <li>Dapat digunakan berulang di jaringan berbeda</li>
+                            <li>Lebih aman karena tersembunyi dari internet</li>
+                        </ul>
+                        <p><strong>Range IP Private:</strong></p>
+                        <ul>
+                            <li>10.0.0.0 - 10.255.255.255</li>
+                            <li>172.16.0.0 - 172.31.255.255</li>
+                            <li>192.168.0.0 - 192.168.255.255</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Analogi</h3>
+                    <p><strong>IP Public</strong> seperti alamat lengkap rumah Anda yang bisa ditemukan di Google Maps.</p>
+                    <p><strong>IP Private</strong> seperti nomor kamar di dalam rumah Anda, hanya diketahui penghuni rumah.</p>
+                `
+            },
+            {
+                title: "DNS - Domain Name System (1)",
+                content: `
+                    <h2>DNS (Domain Name System) 🌐</h2>
+                    <p>DNS adalah sistem yang menerjemahkan nama domain yang mudah diingat menjadi IP Address yang dipahami komputer.</p>
+                    
+                    <div class="highlight-box">
+                        <h4 style="margin-top: 0;">📖 Definisi</h4>
+                        <p><strong>DNS</strong> adalah "buku telepon internet" yang mengubah nama domain (seperti google.com) menjadi IP Address (seperti 172.217.194.138).</p>
+                    </div>
+                    
+                    <h3>Mengapa DNS Penting?</h3>
+                    <ul>
+                        <li><strong>Mudah Diingat:</strong> Lebih mudah mengingat "google.com" daripada "172.217.194.138"</li>
+                        <li><strong>Fleksibel:</strong> IP Address bisa berubah tanpa mengubah nama domain</li>
+                        <li><strong>User-Friendly:</strong> Pengguna tidak perlu hafal angka-angka IP</li>
+                        <li><strong>Skalabilitas:</strong> Satu domain bisa mengarah ke banyak server</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <h4 style="margin-top: 0;">📱 Analogi Buku Telepon</h4>
+                        <p>DNS bekerja seperti buku telepon:</p>
+                        <ul>
+                            <li>Anda mencari nama orang (domain)</li>
+                            <li>Buku telepon memberi nomor telepon (IP Address)</li>
+                            <li>Anda bisa menelepon menggunakan nomor tersebut</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "DNS - Domain Name System (2)",
+                content: `
+                    <h2>Cara Kerja DNS 🔍</h2>
+                    
+                    <h3>Proses DNS Resolution</h3>
+                    <p>Ketika Anda mengetik "www.google.com" di browser:</p>
+                    
+                    <div class="highlight-box">
+                        <ol>
+                            <li><strong>Browser Check:</strong> Browser cek apakah IP sudah tersimpan di cache</li>
+                            <li><strong>OS Check:</strong> Sistem operasi cek DNS cache lokal</li>
+                            <li><strong>Router Check:</strong> Router cek DNS cache-nya</li>
+                            <li><strong>ISP DNS Server:</strong> Jika belum ketemu, tanya ke DNS server ISP</li>
+                            <li><strong>Root DNS Server:</strong> ISP tanya ke root DNS server</li>
+                            <li><strong>TLD DNS Server:</strong> Root mengarahkan ke .com DNS server</li>
+                            <li><strong>Authoritative DNS:</strong> TLD mengarahkan ke DNS server Google</li>
+                            <li><strong>IP Address:</strong> DNS server Google memberikan IP Address</li>
+                            <li><strong>Connection:</strong> Browser terhubung ke IP tersebut</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4 style="margin-top: 0;">⚡ Fakta Menarik</h4>
+                        <p>Proses DNS resolution ini terjadi dalam hitungan milidetik, sehingga Anda hampir tidak merasakan waktu tunggu!</p>
+                    </div>
+                `
+            },
+            {
+                title: "Komponen DNS",
+                content: `
+                    <h2>Komponen-Komponen DNS 🏗️</h2>
+                    
+                    <h3>1. DNS Resolver</h3>
+                    <p>Server yang menerima query dari client dan mencari IP Address yang diminta.</p>
+                    <ul>
+                        <li>Biasanya dikelola oleh ISP</li>
+                        <li>Menyimpan cache hasil pencarian</li>
+                        <li>Contoh: 8.8.8.8 (Google DNS), 1.1.1.1 (Cloudflare DNS)</li>
+                    </ul>
+                    
+                    <h3>2. Root Name Server</h3>
+                    <p>Server tingkat tertinggi dalam hierarki DNS.</p>
+                    <ul>
+                        <li>Ada 13 root server di seluruh dunia</li>
+                        <li>Mengarahkan query ke TLD server yang sesuai</li>
+                    </ul>
+                    
+                    <h3>3. TLD (Top Level Domain) Server</h3>
+                    <p>Server yang mengelola domain tingkat atas.</p>
+                    <ul>
+                        <li>Contoh TLD: .com, .org, .net, .id, .edu</li>
+                        <li>Mengarahkan ke authoritative name server</li>
+                    </ul>
+                    
+                    <h3>4. Authoritative Name Server</h3>
+                    <p>Server yang menyimpan informasi definitif tentang domain tertentu.</p>
+                    <ul>
+                        <li>Menyimpan DNS records (A, AAAA, MX, CNAME, dll)</li>
+                        <li>Memberikan jawaban final untuk query DNS</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Jenis-Jenis DNS Records",
+                content: `
+                    <h2>Jenis-Jenis DNS Records 📋</h2>
+                    
+                    <h3>1. A Record (Address Record)</h3>
+                    <p>Menghubungkan domain dengan IPv4 address.</p>
+                    <div class="highlight-box">
+                        <p><strong>Contoh:</strong> google.com → 172.217.194.138</p>
+                    </div>
+                    
+                    <h3>2. AAAA Record</h3>
+                    <p>Menghubungkan domain dengan IPv6 address.</p>
+                    <div class="highlight-box">
+                        <p><strong>Contoh:</strong> google.com → 2404:6800:4003:c00::8a</p>
+                    </div>
+                    
+                    <h3>3. CNAME Record (Canonical Name)</h3>
+                    <p>Membuat alias untuk domain lain.</p>
+                    <div class="highlight-box">
+                        <p><strong>Contoh:</strong> www.google.com → google.com</p>
+                    </div>
+                    
+                    <h3>4. MX Record (Mail Exchange)</h3>
+                    <p>Menunjukkan server email untuk domain.</p>
+                    <div class="highlight-box">
+                        <p><strong>Contoh:</strong> gmail.com → smtp.gmail.com</p>
+                    </div>
+                    
+                    <h3>5. TXT Record</h3>
+                    <p>Menyimpan informasi teks untuk berbagai keperluan (verifikasi, keamanan, dll).</p>
+                `
+            },
+            {
+                title: "WWW (World Wide Web)",
+                content: `
+                    <h2>World Wide Web (WWW) 🕸️</h2>
+                    <p>World Wide Web adalah sistem informasi yang dapat diakses melalui internet menggunakan protokol HTTP/HTTPS.</p>
+                    
+                    <div class="info-box">
+                        <h4 style="margin-top: 0;">⚠️ Perbedaan Internet dan WWW</h4>
+                        <ul>
+                            <li><strong>Internet:</strong> Infrastruktur jaringan global</li>
+                            <li><strong>WWW:</strong> Layanan yang berjalan di atas internet</li>
+                        </ul>
+                        <p>Analogi: Internet adalah jalan raya, WWW adalah mobil yang berjalan di jalan raya tersebut.</p>
+                    </div>
+                    
+                    <h3>Komponen WWW</h3>
+                    <div class="highlight-box">
+                        <p><strong>1. HTML (HyperText Markup Language)</strong></p>
+                        <p>Bahasa untuk membuat struktur halaman web</p>
+                        
+                        <p><strong>2. HTTP/HTTPS (HyperText Transfer Protocol)</strong></p>
+                        <p>Protokol untuk transfer data di web</p>
+                        
+                        <p><strong>3. URL (Uniform Resource Locator)</strong></p>
+                        <p>Alamat untuk mengakses resource di web</p>
+                        
+                        <p><strong>4. Web Browser</strong></p>
+                        <p>Aplikasi untuk mengakses dan menampilkan halaman web</p>
+                    </div>
+                `
+            },
+            {
+                title: "URL dan Strukturnya",
+                content: `
+                    <h2>URL (Uniform Resource Locator) 🔗</h2>
+                    <p>URL adalah alamat lengkap untuk mengakses resource di internet.</p>
+                    
+                    <h3>Struktur URL</h3>
+                    <div class="highlight-box">
+                        <p style="font-family: monospace; font-size: 16px; background: white; padding: 10px; border-radius: 5px;">
+                            https://www.google.com:443/search?q=jaringan
+                        </p>
+                        <br>
+                        <p><strong>Penjelasan:</strong></p>
+                        <ul>
+                            <li><strong>https://</strong> → Protokol (cara komunikasi)</li>
+                            <li><strong>www</strong> → Subdomain</li>
+                            <li><strong>google.com</strong> → Domain name</li>
+                            <li><strong>:443</strong> → Port (opsional, default: 80 untuk HTTP, 443 untuk HTTPS)</li>
+                            <li><strong>/search</strong> → Path (jalur ke resource)</li>
+                            <li><strong>?q=jaringan</strong> → Query string (parameter pencarian)</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Jenis-Jenis Protokol URL</h3>
+                    <ul>
+                        <li><strong>http://</strong> → HyperText Transfer Protocol (tidak terenkripsi)</li>
+                        <li><strong>https://</strong> → HTTP Secure (terenkripsi, aman)</li>
+                        <li><strong>ftp://</strong> → File Transfer Protocol</li>
+                        <li><strong>mailto:</strong> → Email address</li>
+                    </ul>
+                `
+            },
+            {
+                title: "ISP (Internet Service Provider)",
+                content: `
+                    <h2>ISP (Internet Service Provider) 📡</h2>
+                    <p>ISP adalah perusahaan yang menyediakan layanan akses internet kepada pelanggan.</p>
+                    
+                    <h3>Fungsi ISP</h3>
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>Menyediakan Akses Internet:</strong> Menghubungkan pengguna ke internet</li>
+                            <li><strong>Memberikan IP Address:</strong> Setiap pelanggan mendapat IP address</li>
+                            <li><strong>DNS Server:</strong> Menyediakan layanan DNS</li>
+                            <li><strong>Email Service:</strong> Menyediakan layanan email</li>
+                            <li><strong>Web Hosting:</strong> Menyediakan server untuk website</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Jenis-Jenis Koneksi ISP di Indonesia</h3>
+                    <ul>
+                        <li><strong>Dial-up:</strong> Melalui jalur telepon (sudah jarang)</li>
+                        <li><strong>DSL (Digital Subscriber Line):</strong> Menggunakan kabel telepon</li>
+                        <li><strong>Fiber Optic:</strong> Menggunakan kabel serat optik (paling cepat)</li>
+                        <li><strong>Cable:</strong> Menggunakan kabel TV</li>
+                        <li><strong>Wireless/4G/5G:</strong> Menggunakan sinyal wireless</li>
+                        <li><strong>Satellite:</strong> Untuk daerah terpencil</li>
+                    </ul>
+                    
+                    <h3>Contoh ISP di Indonesia</h3>
+                    <p>Telkom (IndiHome), Biznet, MyRepublic, First Media, XL, Telkomsel, Indosat, dll.</p>
+                `
+            },
+            {
+                title: "Keamanan Internet",
+                content: `
+                    <h2>Keamanan di Internet 🔒</h2>
+                    <p>Keamanan internet sangat penting untuk melindungi data dan privasi Anda saat beraktivitas online.</p>
+                    
+                    <h3>Ancaman Keamanan Internet</h3>
+                    <div class="highlight-box">
+                        <p><strong>1. Malware (Malicious Software)</strong></p>
+                        <ul>
+                            <li>Virus, worm, trojan horse</li>
+                            <li>Spyware dan adware</li>
+                            <li>Ransomware</li>
+                        </ul>
+                        
+                        <p><strong>2. Phishing</strong></p>
+                        <ul>
+                            <li>Email atau website palsu</li>
+                            <li>Mencuri informasi pribadi</li>
+                            <li>Identitas palsu</li>
+                        </ul>
+                        
+                        <p><strong>3. Hacking</strong></p>
+                        <ul>
+                            <li>Akses tidak sah ke sistem</li>
+                            <li>Pencurian data</li>
+                            <li>Serangan DDoS</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Tips Keamanan Internet</h3>
+                    <ul>
+                        <li>✅ Gunakan password yang kuat dan unik</li>
+                        <li>✅ Aktifkan two-factor authentication (2FA)</li>
+                        <li>✅ Update software dan sistem operasi secara berkala</li>
+                        <li>✅ Gunakan antivirus yang terpercaya</li>
+                        <li>✅ Hati-hati dengan email dan link mencurigakan</li>
+                        <li>✅ Gunakan HTTPS untuk transaksi online</li>
+                        <li>✅ Jangan berbagi informasi pribadi sembarangan</li>
+                    </ul>
+                `
+            },
+            {
+                title: "Ringkasan Pembelajaran",
+                content: `
+                    <h2>Ringkasan Materi 📚</h2>
+                    
+                    <h3>1. Jaringan Komputer</h3>
+                    <ul>
+                        <li>Kumpulan komputer yang saling terhubung</li>
+                        <li>Jenis: LAN, MAN, WAN</li>
+                        <li>Topologi: Bus, Star, Ring, Mesh</li>
+                        <li>Perangkat: NIC, Hub, Switch, Router, Modem</li>
+                    </ul>
+                    
+                    <h3>2. Internet</h3>
+                    <ul>
+                        <li>Jaringan komputer global</li>
+                        <li>Menggunakan protokol TCP/IP</li>
+                        <li>Bekerja seperti sistem kantor pos</li>
+                    </ul>
+                    
+                    <h3>3. IP Address</h3>
+                    <ul>
+                        <li>Alamat unik setiap perangkat di jaringan</li>
+                        <li>Format IPv4: 192.168.1.1</li>
+                        <li>Public vs Private IP</li>
+                    </ul>
+                    
+                    <h3>4. DNS</h3>
+                    <ul>
+                        <li>Sistem yang menerjemahkan domain ke IP</li>
+                        <li>Bekerja seperti buku telepon internet</li>
+                        <li>Komponen: Resolver, Root, TLD, Authoritative Server</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <h4 style="margin-top: 0;">🎯 Kesimpulan</h4>
+                        <p>Internet adalah sistem kompleks yang memungkinkan miliaran perangkat berkomunikasi menggunakan protokol standar, IP Address sebagai identitas, dan DNS untuk kemudahan akses.</p>
+                    </div>
+                `
+            }
+        ];
+
+        // Quiz questions
+        const quizQuestions = [
+            {
+                question: "Apa yang dimaksud dengan jaringan komputer?",
+                options: [
+                    "Kumpulan komputer yang berdiri sendiri",
+                    "Kumpulan komputer yang saling terhubung untuk berbagi sumber daya",
+                    "Komputer dengan spesifikasi tinggi",
+                    "Software untuk mengelola komputer"
+                ],
+                correct: 1
+            },
+            {
+                question: "Jenis jaringan yang mencakup area geografis kota atau metropolitan adalah:",
+                options: ["LAN", "MAN", "WAN", "PAN"],
+                correct: 1
+            },
+            {
+                question: "Topologi jaringan yang semua komputernya terhubung ke satu titik pusat (hub/switch) adalah:",
+                options: ["Bus", "Ring", "Star", "Mesh"],
+                correct: 2
+            },
+            {
+                question: "Perangkat yang berfungsi menghubungkan dua atau lebih jaringan dan menentukan jalur terbaik untuk pengiriman data adalah:",
+                options: ["Hub", "Switch", "Router", "Modem"],
+                correct: 2
+            },
+            {
+                question: "Protokol yang digunakan untuk komunikasi data di internet adalah:",
+                options: ["HTTP", "FTP", "TCP/IP", "SMTP"],
+                correct: 2
+            },
+            {
+                question: "Format IP Address versi 4 (IPv4) terdiri dari berapa kelompok angka?",
+                options: ["2 kelompok", "3 kelompok", "4 kelompok", "5 kelompok"],
+                correct: 2
+            },
+            {
+                question: "Manakah yang merupakan contoh IP Address Private?",
+                options: ["203.45.67.89", "192.168.1.1", "8.8.8.8", "172.217.194.138"],
+                correct: 1
+            },
+            {
+                question: "DNS adalah singkatan dari:",
+                options: [
+                    "Data Network System",
+                    "Domain Name System",
+                    "Digital Network Service",
+                    "Domain Network Server"
+                ],
+                correct: 1
+            },
+            {
+                question: "Fungsi utama DNS adalah:",
+                options: [
+                    "Mengenkripsi data",
+                    "Menerjemahkan nama domain menjadi IP Address",
+                    "Mengirim email",
+                    "Menyimpan file"
+                ],
+                correct: 1
+            },
+            {
+                question: "Dalam analogi kantor pos, Router dalam jaringan berperan sebagai:",
+                options: ["Surat", "Amplop", "Kotak pos", "Alamat"],
+                correct: 2
+            },
+            {
+                question: "Perangkat yang mengubah sinyal digital menjadi analog dan sebaliknya adalah:",
+                options: ["Router", "Switch", "Modem", "Hub"],
+                correct: 2
+            },
+            {
+                question: "WWW adalah singkatan dari:",
+                options: [
+                    "World Wide Web",
+                    "World Web Wide",
+                    "Wide World Web",
+                    "Web World Wide"
+                ],
+                correct: 0
+            },
+            {
+                question: "Protokol yang digunakan untuk mengakses website secara aman adalah:",
+                options: ["HTTP", "HTTPS", "FTP", "SMTP"],
+                correct: 1
+            },
+            {
+                question: "ISP adalah singkatan dari:",
+                options: [
+                    "Internet Service Protocol",
+                    "Internet System Provider",
+                    "Internet Service Provider",
+                    "International Service Provider"
+                ],
+                correct: 2
+            },
+            {
+                question: "Manakah yang BUKAN merupakan ancaman keamanan internet?",
+                options: ["Malware", "Phishing", "Firewall", "Hacking"],
+                correct: 2
+            }
+        ];
+
+        // Global variables
+        let currentPage = 0;
+        let currentSection = 'materi';
+        let quizTimer = null;
+        let quizStartTime = null;
+        let quizTimeRemaining = 1200; // 20 minutes in seconds
+        let currentQuestionIndex = 0;
+        let quizAnswers = new Array(15).fill(null);
+        let studentName = '';
+        let studentNIM = '';
+        let tabChangeCount = 0;
+        let copyAttemptCount = 0;
+
+        // Menu navigation
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const menu = this.getAttribute('data-menu');
+                switchSection(menu);
+            });
+        });
+
+        function switchSection(section) {
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-menu="${section}"]`).classList.add('active');
+            
+            document.querySelectorAll('.content-section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            document.getElementById(`${section}-section`).classList.add('active');
+            
+            currentSection = section;
+            
+            if (section === 'materi') {
+                renderMateriPage(currentPage);
+            }
+        }
+
+        // Materi navigation
+        function renderMateriPage(pageIndex) {
+            const page = materiPages[pageIndex];
+            document.getElementById('materi-content').innerHTML = page.content;
+            document.getElementById('pageIndicator').textContent = `Halaman ${pageIndex + 1} dari ${materiPages.length}`;
+            
+            document.getElementById('prevBtn').disabled = pageIndex === 0;
+            document.getElementById('nextBtn').disabled = pageIndex === materiPages.length - 1;
+            
+            currentPage = pageIndex;
+        }
+
+        function nextPage() {
+            if (currentPage < materiPages.length - 1) {
+                renderMateriPage(currentPage + 1);
+            }
+        }
+
+        function previousPage() {
+            if (currentPage > 0) {
+                renderMateriPage(currentPage - 1);
+            }
+        }
+
+        // Simulasi functions
+        function animatePostal() {
+            const sim = document.getElementById('postalSim');
+            const nodes = sim.querySelectorAll('.sim-node');
+            const arrows = sim.querySelectorAll('.sim-arrow');
+            
+            nodes.forEach(node => node.style.transform = 'scale(1)');
+            arrows.forEach(arrow => arrow.style.color = '#10b981');
+            
+            let step = 0;
+            const interval = setInterval(() => {
+                if (step < nodes.length) {
+                    nodes[step].style.transform = 'scale(1.2)';
+                    if (step > 0) {
+                        nodes[step - 1].style.transform = 'scale(1)';
+                    }
+                    if (step < arrows.length) {
+                        arrows[step].style.color = '#7c3aed';
+                    }
+                    step++;
+                } else {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        nodes.forEach(node => node.style.transform = 'scale(1)');
+                        arrows.forEach(arrow => arrow.style.color = '#10b981');
+                    }, 1000);
+                }
+            }, 800);
+        }
+
+        function generateIP() {
+            const octet1 = Math.floor(Math.random() * 223) + 1;
+            const octet2 = Math.floor(Math.random() * 256);
+            const octet3 = Math.floor(Math.random() * 256);
+            const octet4 = Math.floor(Math.random() * 256);
+            const ip = `${octet1}.${octet2}.${octet3}.${octet4}`;
+            
+            document.getElementById('ipDisplay').textContent = ip;
+        }
+
+        function resolveDNS() {
+            const domain = document.getElementById('domainInput').value.trim();
+            const resultDiv = document.getElementById('dnsResult');
+            const resultText = resultDiv.querySelector('p');
+            
+            if (!domain) {
+                resultText.textContent = '⚠️ Masukkan nama domain terlebih dahulu!';
+                resultText.style.color = '#ef4444';
+                resultDiv.style.display = 'block';
+                return;
+            }
+            
+            const fakeIP = `${Math.floor(Math.random() * 223) + 1}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}`;
+            resultText.textContent = `✅ ${domain} → ${fakeIP}`;
+            resultText.style.color = '#7c3aed';
+            resultDiv.style.display = 'block';
+        }
+
+        // Latihan functions
+        function checkExercise(num) {
+            const input = document.getElementById(`ex${num}`).value.trim();
+            const feedback = document.getElementById(`feedback${num}`);
+            
+            if (input.length < 20) {
+                feedback.textContent = '❌ Jawaban terlalu singkat. Jelaskan lebih detail!';
+                feedback.className = 'feedback incorrect';
+            } else {
+                feedback.textContent = '✅ Jawaban Anda sudah cukup lengkap! Terus belajar!';
+                feedback.className = 'feedback correct';
+            }
+        }
+
+        // Quiz functions
+        function startQuiz() {
+            studentName = document.getElementById('studentName').value.trim();
+            studentNIM = document.getElementById('studentNIM').value.trim();
+            
+            if (!studentName || !studentNIM) {
+                const warningDiv = document.getElementById('warningMessage');
+                warningDiv.textContent = '⚠️ Nama dan NIM harus diisi!';
+                warningDiv.style.display = 'block';
+                setTimeout(() => {
+                    warningDiv.style.display = 'none';
+                }, 3000);
+                return;
+            }
+            
+            document.getElementById('quizStart').style.display = 'none';
+            document.getElementById('quizActive').style.display = 'block';
+            
+            document.getElementById('displayName').textContent = studentName;
+            document.getElementById('displayNIM').textContent = studentNIM;
+            
+            quizAnswers = new Array(15).fill(null);
+            currentQuestionIndex = 0;
+            quizTimeRemaining = 1200;
+            tabChangeCount = 0;
+            copyAttemptCount = 0;
+            quizStartTime = new Date();
+            
+            renderQuestion();
+            startTimer();
+            setupQuizSecurity();
+        }
+
+        function setupQuizSecurity() {
+            document.addEventListener('visibilitychange', handleVisibilityChange);
+            document.addEventListener('copy', handleCopyAttempt);
+            document.addEventListener('paste', handlePasteAttempt);
+            document.addEventListener('cut', handleCopyAttempt);
+        }
+
+        function handleVisibilityChange() {
+            if (document.hidden) {
+                tabChangeCount++;
+                const warningDiv = document.getElementById('warningMessage');
+                
+                if (tabChangeCount === 1) {
+                    warningDiv.textContent = '⚠️ Peringatan! Jangan keluar dari halaman kuis!';
+                    warningDiv.style.display = 'block';
+                } else if (tabChangeCount === 2) {
+                    warningDiv.textContent = '⚠️⚠️ Peringatan Kedua! Satu pelanggaran lagi kuis akan selesai!';
+                    warningDiv.style.display = 'block';
+                } else if (tabChangeCount >= 3) {
+                    warningDiv.textContent = '❌ Kuis dihentikan karena melanggar peraturan!';
+                    warningDiv.style.display = 'block';
+                    endQuiz(true);
+                }
+            }
+        }
+
+        function handleCopyAttempt(e) {
+            e.preventDefault();
+            copyAttemptCount++;
+            const warningDiv = document.getElementById('warningMessage');
+            
+            if (copyAttemptCount >= 3) {
+                warningDiv.textContent = '❌ Kuis dihentikan karena mencoba menyalin teks!';
+                warningDiv.style.display = 'block';
+                endQuiz(true);
+            } else {
+                warningDiv.textContent = `⚠️ Dilarang menyalin teks! (Pelanggaran: ${copyAttemptCount}/3)`;
+                warningDiv.style.display = 'block';
+            }
+        }
+
+        function handlePasteAttempt(e) {
+            e.preventDefault();
+            const warningDiv = document.getElementById('warningMessage');
+            warningDiv.textContent = '⚠️ Dilarang menempelkan teks!';
+            warningDiv.style.display = 'block';
+        }
+
+        function startTimer() {
+            quizTimer = setInterval(() => {
+                quizTimeRemaining--;
+                
+                const minutes = Math.floor(quizTimeRemaining / 60);
+                const seconds = quizTimeRemaining % 60;
+                document.getElementById('timerDisplay').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (quizTimeRemaining <= 0) {
+                    endQuiz(false);
+                }
+            }, 1000);
+        }
+
+        function renderQuestion() {
+            const question = quizQuestions[currentQuestionIndex];
+            const card = document.getElementById('questionCard');
+            
+            let optionsHtml = '';
+            question.options.forEach((option, index) => {
+                const selected = quizAnswers[currentQuestionIndex] === index ? 'selected' : '';
+                optionsHtml += `
+                    <li class="option-item ${selected}" onclick="selectOption(${index})">
+                        ${String.fromCharCode(65 + index)}. ${option}
+                    </li>
+                `;
+            });
+            
+            card.innerHTML = `
+                <div class="question-number">Soal ${currentQuestionIndex + 1} dari 15</div>
+                <div class="question-text">${question.question}</div>
+                <ul class="options">${optionsHtml}</ul>
+            `;
+            
+            document.getElementById('questionCounter').textContent = `${currentQuestionIndex + 1}/15`;
+            document.getElementById('prevQuestion').disabled = currentQuestionIndex === 0;
+            document.getElementById('nextQuestion').disabled = currentQuestionIndex === 14;
+        }
+
+        function selectOption(optionIndex) {
+            quizAnswers[currentQuestionIndex] = optionIndex;
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < 14) {
+                currentQuestionIndex++;
+                renderQuestion();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        function submitQuiz() {
+            const unanswered = quizAnswers.filter(a => a === null).length;
+            if (unanswered > 0) {
+                const warningDiv = document.getElementById('warningMessage');
+                warningDiv.textContent = `⚠️ Masih ada ${unanswered} soal yang belum dijawab!`;
+                warningDiv.style.display = 'block';
+                setTimeout(() => {
+                    warningDiv.style.display = 'none';
+                }, 3000);
+            }
+            
+            endQuiz(false);
+        }
+
+        async function endQuiz(violation) {
+            if (quizTimer) {
+                clearInterval(quizTimer);
+            }
+            
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            document.removeEventListener('copy', handleCopyAttempt);
+            document.removeEventListener('paste', handlePasteAttempt);
+            document.removeEventListener('cut', handleCopyAttempt);
+            
+            const quizEndTime = new Date();
+            let score = 0;
+            
+            if (!violation) {
+                quizAnswers.forEach((answer, index) => {
+                    if (answer === quizQuestions[index].correct) {
+                        score++;
+                    }
+                });
+            }
+            
+            const scorePercentage = Math.round((score / 15) * 100);
+            
+            const result = await window.dataSdk.create({
+                nama: studentName,
+                nim: studentNIM,
+                jawaban: quizAnswers.join(','),
+                waktu_mulai: quizStartTime.toISOString(),
+                waktu_selesai: quizEndTime.toISOString(),
+                skor: scorePercentage,
+                total_soal: 15
+            });
+            
+            if (result.isError) {
+                console.error('Error saving quiz result:', result.error);
+            }
+            
+            document.getElementById('quizActive').style.display = 'none';
+            document.getElementById('quizResult').style.display = 'block';
+            
+            document.getElementById('finalScore').textContent = `${scorePercentage}%`;
+            document.getElementById('resultName').textContent = studentName;
+            document.getElementById('resultNIM').textContent = studentNIM;
+            document.getElementById('resultStartTime').textContent = quizStartTime.toLocaleString('id-ID');
+            document.getElementById('resultEndTime').textContent = quizEndTime.toLocaleString('id-ID');
+            
+            let message = '';
+            if (violation) {
+                message = 'Kuis dihentikan karena pelanggaran. Skor: 0';
+            } else if (scorePercentage >= 80) {
+                message = '🎉 Luar Biasa! Anda sangat memahami materi!';
+            } else if (scorePercentage >= 60) {
+                message = '👍 Bagus! Terus tingkatkan pemahaman Anda!';
+            } else {
+                message = '📚 Tetap semangat! Pelajari lagi materinya!';
+            }
+            document.getElementById('resultMessage').textContent = message;
+        }
+
+        function resetQuiz() {
+            document.getElementById('quizResult').style.display = 'none';
+            document.getElementById('quizStart').style.display = 'block';
+            document.getElementById('studentName').value = '';
+            document.getElementById('studentNIM').value = '';
+            document.getElementById('warningMessage').style.display = 'none';
+        }
+
+        // Data SDK implementation
+        const dataHandler = {
+            onDataChanged(data) {
+                // Data handler for quiz results
+            }
+        };
+
+        // Element SDK implementation
+        async function onConfigChange(config) {
+            const appTitle = document.getElementById('app-title');
+            const developerName = document.getElementById('developer-name');
+            const institutionName = document.getElementById('institution-name');
+
+            if (appTitle) {
+                appTitle.textContent = `📚 ${config.judul_aplikasi || defaultConfig.judul_aplikasi}`;
+            }
+            if (developerName) {
+                developerName.textContent = config.nama_pengembang || defaultConfig.nama_pengembang;
+            }
+            if (institutionName) {
+                institutionName.textContent = config.institusi || defaultConfig.institusi;
+            }
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["judul_aplikasi", config.judul_aplikasi || defaultConfig.judul_aplikasi],
+                ["nama_pengembang", config.nama_pengembang || defaultConfig.nama_pengembang],
+                ["institusi", config.institusi || defaultConfig.institusi]
+            ]);
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', async () => {
+            const sdkInitResult = await window.dataSdk.init(dataHandler);
+            if (!sdkInitResult.isOk) {
+                console.error('Failed to initialize Data SDK');
+            }
+
+            if (window.elementSdk) {
+                await window.elementSdk.init({
+                    defaultConfig,
+                    onConfigChange,
+                    mapToCapabilities,
+                    mapToEditPanelValues
+                });
+            }
+
+            renderMateriPage(0);
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a03deeae3dc9cce',t:'MTc2MzQzMTE5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
