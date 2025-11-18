@@ -34,6 +34,23 @@
             overflow-y: auto;
         }
         
+        .sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+        }
+        
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.5);
+        }
+        
         .logo-section {
             text-align: center;
             margin-bottom: 30px;
@@ -85,6 +102,39 @@
             background: white;
             overflow-y: auto;
             height: 100%;
+            position: relative;
+        }
+        
+        .main-content::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        .main-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .main-content::-webkit-scrollbar-thumb {
+            background: #7c3aed;
+            border-radius: 6px;
+        }
+        
+        .main-content::-webkit-scrollbar-thumb:hover {
+            background: #5b21b6;
+        }
+        
+        /* Force scrollbar visibility untuk body */
+        body::-webkit-scrollbar {
+            width: 12px;
+        }
+        body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        body::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 6px;
+        }
+        body::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
         
         .content-section {
@@ -589,7 +639,7 @@
      <p>Pengantar Komputer</p>
     </div>
     <div class="menu-item active" data-menu="materi">
-     📖 Materi Pembelajaran
+     ���� Materi Pembelajaran
     </div>
     <div class="menu-item" data-menu="simulasi">
      🔬 Simulasi
@@ -915,7 +965,7 @@
             {
                 title: "Perangkat Jaringan Komputer (1)",
                 content: `
-                    <h2>Perangkat Jaringan Komputer 🖥️</h2>
+                    <h2>Perangkat Jaringan Komputer ������</h2>
                     
                     <h3>1. Network Interface Card (NIC)</h3>
                     <p>Kartu jaringan yang dipasang pada komputer untuk menghubungkan komputer ke jaringan.</p>
@@ -1735,7 +1785,7 @@
                 feedback.textContent = '❌ Jawaban terlalu singkat. Jelaskan lebih detail!';
                 feedback.className = 'feedback incorrect';
             } else {
-                feedback.textContent = '✅ Jawaban Anda sudah cukup lengkap! Terus belajar!';
+                feedback.textContent = '��� Jawaban Anda sudah cukup lengkap! Terus belajar!';
                 feedback.className = 'feedback correct';
             }
         }
@@ -2021,5 +2071,5 @@
             renderMateriPage(0);
         });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a03deeae3dc9cce',t:'MTc2MzQzMTE5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a03f610b56c40ac',t:'MTc2MzQzMjEzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
